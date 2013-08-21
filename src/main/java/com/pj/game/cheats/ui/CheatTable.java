@@ -105,7 +105,6 @@ public class CheatTable extends JPanel {
 			cheatDisplayTable.setAutoCreateRowSorter(true);
 		}
 		List<GameCheatCode> gameCheatCode = connection.getAndShowAllGameCheatCode(tempId);
-		System.out.println("Size " + gameCheatCode.size() + " " + tempId);
 		boolean checkGameInfoValue = false;
 		try {
 			checkGameInfoValue = gameCheatCode.isEmpty();

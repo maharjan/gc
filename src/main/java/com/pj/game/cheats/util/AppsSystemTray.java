@@ -40,7 +40,7 @@ public class AppsSystemTray {
 
         systemTray = SystemTray.getSystemTray();
         PopupMenu popupMenu = new PopupMenu("PC Cheats : Personal Collection");
-        trayIcon = new TrayIcon(createTrayIcon("/com/pj/game/cheats/images/icon.png"));
+        trayIcon = new TrayIcon(createTrayIcon("/com/pj/game/cheats/images/gc.png"));
         trayIcon.setImageAutoSize(true);
         trayIcon.setToolTip("PC Cheats");
 
