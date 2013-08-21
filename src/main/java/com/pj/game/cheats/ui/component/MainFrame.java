@@ -5,9 +5,11 @@ import java.io.Serializable;
 
 import javax.swing.JFrame;
 
+import org.jdesktop.swingx.JXFrame;
+
 
 /**
- * Provide JFrame singleton instance
+ * Provide JXFrame singleton instance
  * 
  * @author pj
  * 
@@ -19,15 +21,17 @@ public class MainFrame implements Serializable{
 	 */
 	private static final long serialVersionUID = 3819758363647790125L;
 	
-	private static JFrame rootPanel;
+//	private static JFrame rootPanel;
+	
+	private static JXFrame rootPanel;
 
 	public MainFrame() {
 		// DO nothing
 	}
 
-	public static synchronized JFrame getInstance() {
+	public static synchronized JXFrame getInstance() {
 		if (rootPanel == null) {
-			rootPanel = new JFrame();
+			rootPanel = new JXFrame();
 		}
 		return rootPanel;
 	}

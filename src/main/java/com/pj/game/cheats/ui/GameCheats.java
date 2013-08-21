@@ -14,14 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 import javax.swing.JToolBar;
+import javax.swing.SortOrder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
@@ -30,6 +27,11 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
+import org.jdesktop.swingx.JXFrame;
+import org.jdesktop.swingx.JXPanel;
+import org.jdesktop.swingx.JXTable;
+
+import com.pj.game.cheats.constant.GameListTableHeader;
 import com.pj.game.cheats.core.db.ConnectionController;
 import com.pj.game.cheats.entity.GameInformation;
 import com.pj.game.cheats.ui.component.MainFrame;
@@ -51,8 +53,7 @@ public final class GameCheats {
 	private GameWalkthrough gameWalkthrough;
 	private RightClickPopupMenu rightClickPopup;
 	private ConnectionController connection;
-	public JList pcGameInfoList;
-	private JPanel centralPanel;
+	private JXPanel centralPanel;
 	private JToolBar upperToolBar;
 	private JToolBar lowerToolBar;
 	public JTabbedPane tabbedPane;
@@ -63,7 +64,7 @@ public final class GameCheats {
 	private int[] pcInfoListArray;
 	public int tempGameId;
 	public String pcGameTitle;
-	private JTable pcGameListTable;
+	private JXTable pcGameListTable;
 	private JScrollPane pcGameListTableScrollPane;
 
 	public GameCheats() {
@@ -92,7 +93,7 @@ public final class GameCheats {
 
 		Insets margin = new Insets(1, 1, 1, 1);
 		upperToolBar.setMargin(margin);
-		centralPanel = new JPanel();
+		centralPanel = new JXPanel();
 		centerSplitPane = new JSplitPane();
 
 		getAndShowPcGameListTable();
@@ -125,9 +126,9 @@ public final class GameCheats {
 		Image image = createFrameIcon("/com/pj/game/cheats/images/gc.png");
 		MainFrame.getInstance().setIconImage(image);
 		MainFrame.getInstance().setMinimumSize(new Dimension(350, 150));
-		MainFrame.getInstance().setExtendedState(MainFrame.getInstance().getExtendedState() | JFrame.MAXIMIZED_BOTH);
+		MainFrame.getInstance().setExtendedState(MainFrame.getInstance().getExtendedState() | JXFrame.MAXIMIZED_BOTH);
 		MainFrame.getInstance().setResizable(true);
-		MainFrame.getInstance().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		MainFrame.getInstance().setDefaultCloseOperation(JXFrame.EXIT_ON_CLOSE);
 		MainFrame.getInstance().setVisible(true);
 	}
 
@@ -172,13 +173,13 @@ public final class GameCheats {
 	 * 
 	 * @return JTable
 	 */
-	public JTable getAndShowPcGameListTable() {
+	public JXTable getAndShowPcGameListTable() {
 		connection = new ConnectionController();
-		String[] header = { "", " ", "PC Game" };
+		String[] header = { GameListTableHeader.S_N.toString(), GameListTableHeader.TYPE.toString(), GameListTableHeader.NAME.getValue() };
 		final DefaultTableModel defaultModel;
 		defaultModel = new DefaultTableModel(header, 0);
 
-		pcGameListTable = new JTable(defaultModel);
+		pcGameListTable = new JXTable(defaultModel);
 		pcGameListTableScrollPane = new JScrollPane(pcGameListTable);
 		pcGameListTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		pcGameListTableScrollPane.setPreferredSize(new Dimension(330, (int) dimension.getHeight() - 150));
@@ -224,16 +225,13 @@ public final class GameCheats {
 			}
 			defaultModel.addRow(rowData);
 		}
-		// for (int j = gameInformation.size(); j > -1; j--) {
-		// System.out.println("Test game id is : " + pcInfoListArray[j]);
-		// }
-
 		tea.adjustColumn(0);
+		tea.adjustColumn(1);
 		pcGameListTable.setRowHeight(25);
-		pcGameListTable.getColumn("").setMaxWidth(30);
-		pcGameListTable.getColumn("").setMinWidth(30);
-		pcGameListTable.getColumn(" ").setMaxWidth(50);
-		pcGameListTable.getColumn(" ").setMinWidth(50);
+		// pcGameListTable.getColumn("").setMaxWidth(30);
+		// pcGameListTable.getColumn("").setMinWidth(30);
+		// pcGameListTable.getColumn(" ").setMaxWidth(50);
+		// pcGameListTable.getColumn(" ").setMinWidth(50);
 		pcGameListTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
 			public void valueChanged(ListSelectionEvent e) {
@@ -245,6 +243,7 @@ public final class GameCheats {
 			}
 		});
 
+		pcGameListTable.setSortOrder(0, SortOrder.ASCENDING);
 		return pcGameListTable;
 	}
 
@@ -277,12 +276,12 @@ public final class GameCheats {
 
 			public void run() {
 				try {
-					// UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 					GameCheats gameCheats = new GameCheats();
 					gameCheats.run();
 					// } catch (UnsupportedLookAndFeelException ex) {
 					// System.out.println("The LaF isn't supported in this platform");
 				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		});

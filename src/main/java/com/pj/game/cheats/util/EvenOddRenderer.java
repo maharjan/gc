@@ -2,22 +2,27 @@ package com.pj.game.cheats.util;
 
 import java.awt.Color;
 import java.awt.Component;
+
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 
+import org.jdesktop.swingx.renderer.DefaultTableRenderer;
+
 /**
- *
+ * Supports both JTable and JXTable cell rendering
+ * 
  * @author prajin
  */
 public class EvenOddRenderer implements TableCellRenderer {
 
-    public static final DefaultTableCellRenderer DEFAULT_RENDERER = new DefaultTableCellRenderer();
+    
+    public static final DefaultTableRenderer DEFAULT_RENDERER = new DefaultTableRenderer(); 
 
     public Component getTableCellRendererComponent(JTable table, Object value,
             boolean isSelected, boolean hasFocus, int row, int column) {
-        Component renderer = DEFAULT_RENDERER.getTableCellRendererComponent(
+        
+    	Component renderer = DEFAULT_RENDERER.getTableCellRendererComponent(
                 table, value, isSelected, hasFocus, row, column);
         ((JLabel) renderer).setOpaque(true);
         Color foreground, background;

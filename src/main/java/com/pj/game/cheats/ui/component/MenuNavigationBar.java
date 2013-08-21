@@ -13,16 +13,17 @@ import javax.swing.KeyStroke;
 import com.pj.game.cheats.core.db.ConnectionController;
 import com.pj.game.cheats.util.FontUtil;
 
+
 /**
  * Generate menu contents and their action in predefined order.
  * 
  * @author pj
- *
+ * 
  */
 public class MenuNavigationBar {
 
 	public JMenuBar show() {
-		 
+
 		JMenuItem newFileMenuItem = new JMenuItem("New ");
 		newFileMenuItem.setFont(FontUtil.font14());
 		newFileMenuItem.setMnemonic(KeyEvent.VK_N);
@@ -123,7 +124,7 @@ public class MenuNavigationBar {
 		helpContentHelpMenuItem.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("");
+
 			}
 		});
 
@@ -150,12 +151,12 @@ public class MenuNavigationBar {
 		helpMenu.add(helpContentHelpMenuItem);
 
 		JMenuBar mainMenu = new JMenuBar();
+
 		mainMenu.add(fileMenu);
 		mainMenu.add(editMenu);
 		mainMenu.add(optionMenu);
 		mainMenu.add(helpMenu);
 		return mainMenu;
 	}
-	
-	
+
 }
