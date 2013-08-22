@@ -146,7 +146,7 @@ public final class GameCheats {
 		cheatTable = new CheatTable(this);
 		addNewCheat = new AddNewCheat(this);
 		// gameWalkthrough = new GameWalkthrough(this);
-		tabbedPane.addTab("PC Cheats Table", cheatTable);
+		tabbedPane.addTab("Cheats Table", cheatTable);
 		// tabbedPane.addTab("Walkthrough", gameWalkthrough);
 		tabbedPane.addTab("New Cheats", addNewCheat);
 		tabbedPane.addChangeListener(new ChangeListener() {
@@ -205,7 +205,7 @@ public final class GameCheats {
 		rowData[0] = rowData[1] = "";
 		rowData[2] = "ALL";
 		pcInfoListArray[0] = 0;
-		defaultModel.addRow(rowData);
+		// defaultModel.addRow(rowData);
 
 		for (int i = 0; i < gameInformation.size(); i++) {
 			GameInformation info = gameInformation.get(i);

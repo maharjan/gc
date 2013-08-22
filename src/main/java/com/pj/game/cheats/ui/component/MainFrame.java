@@ -27,6 +27,7 @@ public class MainFrame implements Serializable{
 
 	public MainFrame() {
 		// DO nothing
+		// stops new initialization
 	}
 
 	public static synchronized JXFrame getInstance() {
