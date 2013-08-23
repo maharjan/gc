@@ -39,10 +39,10 @@ public class AppsSystemTray {
         }
 
         systemTray = SystemTray.getSystemTray();
-        PopupMenu popupMenu = new PopupMenu("PC Cheats : Personal Collection");
+        PopupMenu popupMenu = new PopupMenu("-: Game Cheats :-");
         trayIcon = new TrayIcon(createTrayIcon("/com/pj/game/cheats/images/gc.png"));
         trayIcon.setImageAutoSize(true);
-        trayIcon.setToolTip("PC Cheats");
+        trayIcon.setToolTip("Game Cheats (GC)");
 
         MenuItem exit = new MenuItem(" Exit ");
         MenuItem aboutMe = new MenuItem(" About Me ");

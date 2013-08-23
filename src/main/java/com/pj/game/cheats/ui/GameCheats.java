@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 import org.jdesktop.swingx.JXFrame;
+import org.jdesktop.swingx.JXList;
 import org.jdesktop.swingx.JXPanel;
 import org.jdesktop.swingx.JXTable;
 
@@ -65,6 +66,7 @@ public final class GameCheats {
 	public int tempGameId;
 	public String pcGameTitle;
 	private JXTable pcGameListTable;
+	public JXList pcGameInfoList;
 	private JScrollPane pcGameListTableScrollPane;
 
 	public GameCheats() {
@@ -116,6 +118,10 @@ public final class GameCheats {
 		centralPanel.add(lowerToolBar, BorderLayout.SOUTH);
 		centralPanel.setPreferredSize(new Dimension((int) dimension.getWidth() - 20, (int) dimension.getHeight() - 150));
 
+		rightClickPopup = new RightClickPopupMenu(this);
+		appsSystemTray = new AppsSystemTray();
+		appsSystemTray.initSystemTray();
+		
 		MenuNavigationBar menuNavigationBar = new MenuNavigationBar();
 
 		MainFrame.getInstance().setTitle("-: Game Cheats :-");
