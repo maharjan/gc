@@ -37,7 +37,7 @@ public class ConnectionController {
 	public void getApplicationProperties() {
 		props = new Properties();
 		props.put("user", "pccheats");
-		props.put("password", "pcheats1.0.0");
+		props.put("password", "pccheats1.0.0");
 	}
 
 	/**

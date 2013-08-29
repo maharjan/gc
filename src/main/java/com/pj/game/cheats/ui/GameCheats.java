@@ -5,11 +5,11 @@ import javax.swing.event.ListSelectionEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.nio.ReadOnlyBufferException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -184,12 +184,12 @@ public final class GameCheats {
 		String[] header = { GameListTableHeader.S_N.toString(), GameListTableHeader.TYPE.toString(), GameListTableHeader.NAME.getValue() };
 		final DefaultTableModel defaultModel;
 		defaultModel = new DefaultTableModel(header, 0);
-
+		
 		pcGameListTable = new JXTable(defaultModel);
 		pcGameListTableScrollPane = new JScrollPane(pcGameListTable);
 		pcGameListTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		pcGameListTableScrollPane.setPreferredSize(new Dimension(330, (int) dimension.getHeight() - 150));
-		pcGameListTable.setFont(new Font("Bookman Old Style", Font.ROMAN_BASELINE, 16));
+		pcGameListTable.setFont(FontUtil.font14());
 		pcGameListTable.setPreferredSize(new Dimension(330, (int) dimension.getHeight() - 150));
 		pcGameListTable.setAutoscrolls(true);
 		pcGameListTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -215,7 +215,7 @@ public final class GameCheats {
 
 		for (int i = 0; i < gameInformation.size(); i++) {
 			GameInformation info = gameInformation.get(i);
-			int id = i + 1;
+//			int id = i + 1;
 
 			pcInfoListArray[i + 1] = info.getId();
 			tempHold = info.getGameGenre();

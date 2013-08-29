@@ -1,7 +1,7 @@
 package com.pj.game.cheats.constant;
 
 public enum GameListTableHeader {
-	S_N("S No"), TYPE("Type"), NAME("Name");
+	S_N("S.N"), TYPE("Type"), NAME("Name");
 
 	private String value;
 

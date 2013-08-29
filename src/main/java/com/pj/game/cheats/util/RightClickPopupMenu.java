@@ -1,6 +1,5 @@
 package com.pj.game.cheats.util;
 
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -19,7 +18,7 @@ import com.pj.game.cheats.ui.GameCheats;
 
 /**
  *
- * @author Sherif
+ * @author PJ
  */
 public class RightClickPopupMenu implements ActionListener, ItemListener {
 
@@ -37,7 +36,6 @@ public class RightClickPopupMenu implements ActionListener, ItemListener {
 
     public void createAndShowPopupMenu() {
         String title = "Right click menu.";
-        Font font = new Font("Bookman Old Style", 0, 14);
         JPopupMenu popup = new JPopupMenu(title);
 
         JMenuItem updateMenu = new JMenuItem(" Update ");
